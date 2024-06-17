@@ -48,5 +48,6 @@ public class BootInit implements ApplicationRunner {
     for(var odontologo:dummyOdontologos){
       this.odontologoService.create(odontologo);
     }
+
   }
 }

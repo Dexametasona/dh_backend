@@ -25,8 +25,10 @@ public class PacienteServiceImpl implements PacienteService {
   @Override
   @Transactional
   public PacienteDtoRes create(PacienteDtoReq pacienteDto) {
+
     var newPaciente = pacienteMap.dtoReqToPaciente(pacienteDto);
     var pacienteSaved = this.pacienteRepo.save(newPaciente);
+
     return pacienteMap.pacienteToDtoRes(pacienteSaved);
   }
 
