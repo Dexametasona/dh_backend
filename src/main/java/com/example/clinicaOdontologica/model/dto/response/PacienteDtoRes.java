@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public record PacienteDtoRes(
-        String id,
+        UUID id,
         String nombre,
         String apellido,
         String email,
