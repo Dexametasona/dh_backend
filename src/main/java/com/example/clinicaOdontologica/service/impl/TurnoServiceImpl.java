@@ -34,13 +34,14 @@ public class TurnoServiceImpl implements TurnoService {
         Turno turnoGuardado = turnoRepository.save(entidadTurno);
 
 
-
+        log.info("Turno persistido "+turnoGuardado);
         return mapperTurno.TurnoToDTOresp(turnoGuardado);
     }
 
     @Override
     public Page<TurnoDTOresp> getAll(Pageable pageable) {
         var turnos = this.turnoRepository.findAll(pageable);
+        log.info("Turnos listados ");
         var turnosDTO = turnos.getContent()
                 .stream()
                 .map(mapperTurno::TurnoToDTOresp)
@@ -52,6 +53,7 @@ public class TurnoServiceImpl implements TurnoService {
     public TurnoDTOresp getById(int id) {
         var turnoFound = this.turnoRepository.findById(id).orElseThrow(
                 ()->new EntityNotFoundException("No se encontró al turno con id: "+id));
+        log.info("Turno encontrado por ID "+turnoFound);
         return mapperTurno.TurnoToDTOresp(turnoFound);
     }
 
@@ -62,15 +64,18 @@ public class TurnoServiceImpl implements TurnoService {
         }
         var newTurno = this.mapperTurno.DTOreqToTurno(turnoDTO,odontologoRepository,pacienteRepository);
         newTurno.setID(id);
+        log.info("Turno actualizado por ID "+newTurno);
         return this.mapperTurno.TurnoToDTOresp(this.turnoRepository.save(newTurno));
     }
 
     @Override
     public void deleteById(int id) {
-        if(!this.turnoRepository.existsById(id)){
+        var turno=this.turnoRepository.existsById(id);
+        if(!turno){
             throw new EntityNotFoundException("Turno no encontrado, id:"+ id);
         }
         this.turnoRepository.deleteById(id);
+        log.info("Turno eliminado por ID "+turno);
     }
     }
 
