@@ -18,7 +18,6 @@ public interface PacienteMapper {
 
   @Mapping(target = "domicilio", expression = "java(paciente.getDomicilio().toString())")
   @Mapping(target = "odontologo", expression = "java(paciente.getOdontologo() != null ? paciente.getOdontologo().toString() : \"no hay odontologo asociado\")")
-  @Mapping(target = "fechaIngreso", dateFormat = "dd-MM-yyyy HH:mm")
   PacienteDtoRes pacienteToDtoRes(Paciente paciente);
 
   List<PacienteDtoRes> listPacienteToDto(List<Paciente> pacientes);

@@ -33,8 +33,8 @@ public class TurnoServiceImpl implements TurnoService {
         Turno entidadTurno=mapperTurno.DTOreqToTurno(turno,odontologoRepository,pacienteRepository);
         Turno turnoGuardado = turnoRepository.save(entidadTurno);
 
-
         log.info("Turno persistido "+turnoGuardado);
+
         return mapperTurno.TurnoToDTOresp(turnoGuardado);
     }
 

@@ -26,7 +26,7 @@ public class Paciente {
   private LocalDateTime fechaIngreso;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "domicilio_id", referencedColumnName = "id",nullable = false)
+  @JoinColumn(name = "domicilio_id", referencedColumnName = "id", nullable = false)
   private Domicilio domicilio;
 
   @ManyToOne
@@ -36,5 +36,11 @@ public class Paciente {
   @PrePersist
   public void onCreate(){
     this.fechaIngreso = LocalDateTime.now();
+  }
+
+  @Override
+  public String toString() {
+    return String.format("%s %s, con dni: %s",
+            nombre,apellido,dni);
   }
 }
