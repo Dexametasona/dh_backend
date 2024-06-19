@@ -15,6 +15,11 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> atraparEntidadNoEncontrada(EntityNotFoundException e, WebRequest web)
     {
         ErrorDetalles errorDetalles= new ErrorDetalles(LocalDateTime.now(), e.getMessage(), web.getDescription(false));
+        return new ResponseEntity<>(errorDetalles, HttpStatus.NOT_FOUND);
+    }
+   @ExceptionHandler(ResourceNotFound.class )
+    public ResponseEntity<?> handleResourceNotFound(ResourceNotFound e, WebRequest web) {
+        ErrorDetalles errorDetalles= new ErrorDetalles(LocalDateTime.now(), e.getMessage(), web.getDescription(false));
         return new ResponseEntity<>(errorDetalles, HttpStatus.BAD_REQUEST);
     }
     @ExceptionHandler(Exception.class )

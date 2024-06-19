@@ -25,7 +25,7 @@ public class OdontologoServiceImpl implements OdontologoService {
   public OdontologoDtoRes create(OdontologoDtoReq odontologoDto) {
     Odontologo odontologo= odontologoMap.dtoReqToOdontologo(odontologoDto);
     var newOdontologo = this.odontologoRepo.save(odontologo);
-    log.info("Odontologo persistido "+odontologo);
+    log.info("Odontologo persistido {}", odontologo);
     return odontologoMap.odontologoToDtoRes(newOdontologo);
   }
 
