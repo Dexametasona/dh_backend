@@ -12,6 +12,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("${api.basePath}/odontologo")
 @RequiredArgsConstructor
+
 public class OdontologoController {
   private final OdontologoService odontologoService;
 

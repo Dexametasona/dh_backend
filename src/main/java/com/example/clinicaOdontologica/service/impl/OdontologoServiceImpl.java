@@ -51,10 +51,11 @@ public class OdontologoServiceImpl implements OdontologoService {
 
   @Override
   public void deleteById(UUID id) {
-    if(!this.odontologoRepo.existsById(id)){
+    var odontologo =this.odontologoRepo.existsById(id);
+    if(!odontologo){
       throw new EntityNotFoundException("Odontologo no encontrado, id: "+id);
     }
-    var odontologo =this.odontologoRepo.existsById(id);
+    this.odontologoRepo.deleteById(id);
     log.info("Odontologo borrado por ID ",odontologo);
   }
 

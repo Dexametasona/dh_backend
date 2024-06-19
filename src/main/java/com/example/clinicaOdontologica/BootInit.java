@@ -25,12 +25,12 @@ public class BootInit implements ApplicationRunner {
 
     List<PacienteDtoReq> dummyPacientes = List.of(
             new PacienteDtoReq("Juan", "Pérez", "juan.perez@example.com", "12345678", "Calle Falsa", 123, "Buenos Aires", "Buenos Aires"),
-            new PacienteDtoReq("María", "González", "maria.gonzalez@example.com", "87654321", "Avenida Siempre Viva", 456, "Rosario", "Santa Fe"),
+            new PacienteDtoReq("María", "Gomez", "maria.gonzalez@example.com", "87654321", "Avenida Siempre Viva", 456, "Rosario", "Santa Fe"),
             new PacienteDtoReq("Carlos", "Rodríguez", "carlos.rodriguez@example.com", "11223344", "Boulevard Central", 789, "Córdoba", "Córdoba"),
             new PacienteDtoReq("Ana", "López", "ana.lopez@example.com", "44332211", "Calle Principal", 101, "Mendoza", "Mendoza"),
             new PacienteDtoReq("Luis", "Martínez", "luis.martinez@example.com", "55667788", "Avenida Libertador", 202, "San Miguel de Tucumán", "Tucumán"),
             new PacienteDtoReq("Laura", "Fernández", "laura.fernandez@example.com", "99887766", "Calle Secundaria", 303, "Salta", "Salta"),
-            new PacienteDtoReq("Jorge", "Gómez", "jorge.gomez@example.com", "66554433", "Pasaje los Andes", 404, "Santa Rosa", "La Pampa"),
+            new PacienteDtoReq("Jorge", "Gomez", "jorge.gomez@example.com", "66554433", "Pasaje los Andes", 404, "Santa Rosa", "La Pampa"),
             new PacienteDtoReq("Sofía", "Hernández", "sofia.hernandez@example.com", "33445566", "Calle Independencia", 505, "Neuquén", "Neuquén"),
             new PacienteDtoReq("Miguel", "Torres", "miguel.torres@example.com", "22114433", "Avenida de Mayo", 606, "San Juan", "San Juan"),
             new PacienteDtoReq("Lucía", "Ramírez", "lucia.ramirez@example.com", "77889900", "Calle Belgrano", 707, "Posadas", "Misiones")

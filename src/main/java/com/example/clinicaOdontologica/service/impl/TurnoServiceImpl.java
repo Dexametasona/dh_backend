@@ -1,5 +1,6 @@
 package com.example.clinicaOdontologica.service.impl;
 
+import com.example.clinicaOdontologica.model.dto.request.TurnoDTOentreFechas;
 import com.example.clinicaOdontologica.model.dto.request.TurnoDTOreq;
 import com.example.clinicaOdontologica.model.dto.response.TurnoDTOresp;
 import com.example.clinicaOdontologica.model.entity.Turno;
@@ -77,7 +78,14 @@ public class TurnoServiceImpl implements TurnoService {
         this.turnoRepository.deleteById(id);
         log.info("Turno eliminado por ID "+turno);
     }
+
+    @Override
+    public List<TurnoDTOresp> listaDeTurnosPorFecha(TurnoDTOentreFechas turnoDTOentreFechas) {
+        List<Turno> turnosresp = turnoRepository.getTurnoBetweenFecha(turnoDTOentreFechas.fechainicio(),turnoDTOentreFechas.fechafinal());
+
+        return turnosresp.stream().map(mapperTurno::TurnoToDTOresp).toList();
     }
+}
 
 
 

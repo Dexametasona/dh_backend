@@ -19,8 +19,6 @@ public class Odontologo {
   private String apellido;
   private String nombre;
   private String matricula;
-  @OneToMany(mappedBy = "odontologo", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Paciente> pacientes;
 
   @Override
   public String toString() {

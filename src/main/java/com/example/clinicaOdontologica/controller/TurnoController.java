@@ -1,6 +1,7 @@
 package com.example.clinicaOdontologica.controller;
 
 import com.example.clinicaOdontologica.model.dto.request.OdontologoDtoReq;
+import com.example.clinicaOdontologica.model.dto.request.TurnoDTOentreFechas;
 import com.example.clinicaOdontologica.model.dto.request.TurnoDTOreq;
 import com.example.clinicaOdontologica.model.dto.response.TurnoDTOresp;
 import com.example.clinicaOdontologica.service.TurnoService;
@@ -26,7 +27,12 @@ public class TurnoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.turnoService.create(turnoDTO));
     }
 
-  @GetMapping
+    @PostMapping("/fechas")
+    public ResponseEntity<?> obtenerTurnosEntreFechas(@RequestBody TurnoDTOentreFechas turnoDTOentreFechas)
+{
+    return ResponseEntity.ok(turnoService.listaDeTurnosPorFecha(turnoDTOentreFechas));
+}
+    @GetMapping
   public ResponseEntity<?> getAll(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "10") int size,
                                   @RequestParam(defaultValue = "fechaCita") String sort,
@@ -50,4 +56,8 @@ public class TurnoController {
         this.turnoService.deleteById(id);
         return ResponseEntity.ok("turno eliminado con éxito, id:"+id);
     }
+
+
+
 }
+

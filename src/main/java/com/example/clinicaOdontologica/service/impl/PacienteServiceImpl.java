@@ -14,6 +14,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -71,5 +72,10 @@ public class PacienteServiceImpl implements PacienteService {
     }
     this.pacienteRepo.deleteById(id);
     log.info("Paciente borrado por ID "+paciente);
+  }
+  @Override
+  public List<PacienteDtoRes> getByApellido(String apellido)
+  {
+    return pacienteRepo.getAllByApellido(apellido).stream().map(pacienteMap::pacienteToDtoRes).toList();
   }
 }

@@ -17,7 +17,7 @@ public interface PacienteMapper {
   Paciente dtoReqToPaciente(PacienteDtoReq pacienteDtoReq);
 
   @Mapping(target = "domicilio", expression = "java(paciente.getDomicilio().toString())")
-  @Mapping(target = "odontologo", expression = "java(paciente.getOdontologo() != null ? paciente.getOdontologo().toString() : \"no hay odontologo asociado\")")
+
   PacienteDtoRes pacienteToDtoRes(Paciente paciente);
 
   List<PacienteDtoRes> listPacienteToDto(List<Paciente> pacientes);

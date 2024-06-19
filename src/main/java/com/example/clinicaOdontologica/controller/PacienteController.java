@@ -30,9 +30,16 @@ public class PacienteController {
   public ResponseEntity<?> create(@RequestBody PacienteDtoReq pacienteDto){
     return ResponseEntity.status(HttpStatus.CREATED).body(this.pacienteService.create(pacienteDto));
   }
+
+
   @GetMapping("/{id}")
   public ResponseEntity<?> getById(@PathVariable UUID id){
     return ResponseEntity.ok(this.pacienteService.getById(id));
+  }
+
+  @GetMapping("/apellido/{apellido}")
+  public ResponseEntity<?> getAllByApellido(@PathVariable String apellido){
+    return ResponseEntity.ok(this.pacienteService.getByApellido(apellido));
   }
   @PutMapping("/{id}")
   public ResponseEntity<?> updateById(@PathVariable UUID id, @RequestBody PacienteDtoReq pacienteDto){

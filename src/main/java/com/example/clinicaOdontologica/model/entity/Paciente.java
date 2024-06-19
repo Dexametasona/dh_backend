@@ -29,10 +29,6 @@ public class Paciente {
   @JoinColumn(name = "domicilio_id", referencedColumnName = "id", nullable = false)
   private Domicilio domicilio;
 
-  @ManyToOne
-  @JoinColumn(name = "odontologo_id")
-  private Odontologo odontologo;
-
   @PrePersist
   public void onCreate(){
     this.fechaIngreso = LocalDateTime.now();

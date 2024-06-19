@@ -17,5 +17,11 @@ public class GlobalExceptionHandler {
         ErrorDetalles errorDetalles= new ErrorDetalles(LocalDateTime.now(), e.getMessage(), web.getDescription(false));
         return new ResponseEntity<>(errorDetalles, HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(Exception.class )
+    public ResponseEntity<?> atraparExcepcion(Exception e, WebRequest web)
+    {
+        ErrorDetalles errorDetalles= new ErrorDetalles(LocalDateTime.now(), e.getMessage(), web.getDescription(false));
+        return new ResponseEntity<>(errorDetalles, HttpStatus.BAD_REQUEST);
+    }
 
 }
