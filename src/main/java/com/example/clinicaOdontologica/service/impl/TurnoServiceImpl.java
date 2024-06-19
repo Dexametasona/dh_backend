@@ -1,5 +1,6 @@
 package com.example.clinicaOdontologica.service.impl;
 
+import com.example.clinicaOdontologica.excepciones.ResourceNotFound;
 import com.example.clinicaOdontologica.model.dto.request.TurnoDTOreq;
 import com.example.clinicaOdontologica.model.dto.response.TurnoDTOresp;
 import com.example.clinicaOdontologica.model.entity.Turno;
@@ -29,6 +30,9 @@ public class TurnoServiceImpl implements TurnoService {
     private final PacienteRepository pacienteRepository;
     @Override
     public TurnoDTOresp create(TurnoDTOreq turno) {
+        if(!this.odontologoRepository.existsById(turno.id_odontologo())){
+            throw new ResourceNotFound("Id de odontologo no valido.");
+        }
 
         Turno entidadTurno=mapperTurno.DTOreqToTurno(turno,odontologoRepository,pacienteRepository);
         Turno turnoGuardado = turnoRepository.save(entidadTurno);
